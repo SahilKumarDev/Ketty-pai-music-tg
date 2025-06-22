@@ -6,7 +6,7 @@ from pyrogram.enums import ChatMembersFilter
 from pyrogram.types import CallbackQuery, Message
 
 from KettyPai import app
-from KettyPai.core.call import Gaana
+from KettyPai.core.call import KettyPai
 from KettyPai.misc import db
 from KettyPai.utils.database import get_assistant, get_authuser_names, get_cmode
 from KettyPai.utils.decorators import ActualAdminCB, AdminActual, language
@@ -53,7 +53,7 @@ async def restartbot(client, message: Message, _):
     await asyncio.sleep(1)
     try:
         db[message.chat.id] = []
-        await Gaana.stop_stream_force(message.chat.id)
+        await KettyPai.stop_stream_force(message.chat.id)
     except:
         pass
     userbot = await get_assistant(message.chat.id)
@@ -80,7 +80,7 @@ async def restartbot(client, message: Message, _):
             pass
         try:
             db[chat_id] = []
-            await Gaana.stop_stream_force(chat_id)
+            await KettyPai.stop_stream_force(chat_id)
         except:
             pass
     return await mystic.edit_text(_["reload_5"].format(app.mention))

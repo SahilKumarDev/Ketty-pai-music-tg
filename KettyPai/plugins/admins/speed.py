@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from KettyPai import app
-from KettyPai.core.call import Gaana
+from KettyPai.core.call import KettyPai
 from KettyPai.misc import SUDOERS, db
 from KettyPai.utils import AdminRightsCheck
 from KettyPai.utils.database import is_active_chat, is_nonadmin_chat
@@ -94,7 +94,7 @@ async def del_back_playlist(client, CallbackQuery, _):
         text=_["admin_32"].format(CallbackQuery.from_user.mention),
     )
     try:
-        await Gaana.speedup_stream(
+        await KettyPai.speedup_stream(
             chat_id,
             file_path,
             speed,

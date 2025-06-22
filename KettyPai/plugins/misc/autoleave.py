@@ -5,7 +5,7 @@ from pytgcalls.exceptions import GroupCallNotFound
 import config
 from KettyPai import app
 from KettyPai.misc import db
-from KettyPai.core.call import Gaana, autoend, counter
+from KettyPai.core.call import KettyPai, autoend, counter
 from KettyPai.utils.database import get_client, set_loop, is_active_chat, is_autoend, is_autoleave
 import logging
 
@@ -56,7 +56,7 @@ async def auto_end():
             nocall = False
             for chat_id in chatss:
                 try:
-                    users = len(await Gaana.call_listeners(chat_id))
+                    users = len(await KettyPai.call_listeners(chat_id))
                 except GroupCallNotFound:
                     users = 1
                     nocall = True
@@ -71,7 +71,7 @@ async def auto_end():
                     except Exception:
                         pass
                     try:
-                        await Gaana.stop_stream(chat_id)
+                        await KettyPai.stop_stream(chat_id)
                     except Exception:
                         pass
                     try:

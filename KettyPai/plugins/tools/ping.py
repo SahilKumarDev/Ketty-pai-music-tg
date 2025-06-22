@@ -4,7 +4,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from KettyPai import app
-from KettyPai.core.call import Gaana
+from KettyPai.core.call import KettyPai
 from KettyPai.utils import bot_sys_stats
 from KettyPai.utils.decorators.language import language
 from KettyPai.utils.inline import supp_markup
@@ -19,7 +19,7 @@ async def ping_com(client, message: Message, _):
         photo=PING_IMG_URL,
         caption=_["ping_1"].format(app.mention),
     )
-    pytgping = await Gaana.ping()
+    pytgping = await KettyPai.ping()
     UP, CPU, RAM, DISK = await bot_sys_stats()
     resp = (datetime.now() - start).microseconds / 1000
     await response.edit_text(
