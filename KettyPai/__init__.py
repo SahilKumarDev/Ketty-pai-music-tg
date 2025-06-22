@@ -1,4 +1,4 @@
-from KettyPai.core.bot import Gaana
+from KettyPai.core.bot import KettyPai
 from KettyPai.core.dir import dirr
 from KettyPai.core.git import git
 from KettyPai.core.userbot import Userbot
@@ -11,7 +11,7 @@ git()
 dbb()
 heroku()
 
-app = Gaana()
+app = KettyPai()
 userbot = Userbot()
 
 
